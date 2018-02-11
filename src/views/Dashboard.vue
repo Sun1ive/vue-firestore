@@ -7,9 +7,17 @@
       <li 
         v-for="employee in employees"
         :key="employee.id"
-        v-text="employee.name"
         class="collection-item"
-      />
+      >
+        <div class="chip">{{ employee.dept }}</div>
+        {{ employee.employee_id }} : {{ employee.name }}
+        <router-link 
+          class="secondary-content" 
+          :to="{ 
+            name: 'ViewEmployee', 
+            params: { id: employee.employee_id } 
+          }"><i class="fa fa-eye" /></router-link>
+      </li>
     </ul>
     <div class="fixed-action-btn">
       <router-link to="/new" class="btn-floating btn-large red">
@@ -29,7 +37,7 @@ export default class Dashboard extends Vue {
   private employees: DataEmployee[] = [];
 
   private async created() {
-    const response = await db.collection('employees').get();
+    const response = await db.collection('employees').orderBy('dept').get();
     response.forEach(doc => {
       const data: DataEmployee = {
         id: doc.id,
