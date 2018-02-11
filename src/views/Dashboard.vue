@@ -1,25 +1,20 @@
 <template>
   <div class="dashboard">
-    <button @click="clickme">clickme</button>
+    <h3>Dashboard</h3>
+    <h1>{{ msg }}</h1>
+    <button @click="changeMsg">Click</button>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Emit, Provide, Vue } from 'vue-property-decorator';
-// import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
-
-// @Component({
-//   components: {},
-// })
+import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class Home extends Vue {
-  @Provide()
-  public foo: number = 1;
+export default class Dashboard extends Vue {
+  private msg: string = 'Hello!';
 
-  @Emit()
-  public clickme(): void {
-    this.foo ++;
+  private changeMsg(): void {
+    this.msg = 'World!';
   }
 }
 </script>

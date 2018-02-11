@@ -1,5 +1,4 @@
-import { shallow } from '@vue/test-utils';
-import HelloWorld from '@/components/HelloWorld.vue';
+/* import { shallow } from '@vue/test-utils';
 
 describe('HelloWorld.vue', () => {
   it('renders props.msg when passed', () => {
@@ -10,3 +9,4 @@ describe('HelloWorld.vue', () => {
     expect(wrapper.text()).toMatch(msg);
   });
 });
+*/
